@@ -6,3 +6,6 @@ can submit form request to google form using retrofit
 using viewpager that can switch from one tabs to another
 using recyclerview for efficiency and responsiveness of the app
 using two fragments one for top learner and other for skill IQ
+
+# Screenshots of the interface were taken and uploaded
+it resides in screenshots folder to showcase
