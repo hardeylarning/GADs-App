@@ -6,19 +6,19 @@
     android:layout_height="100dp">
     <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content"
         app:cardElevation="5dp">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
             <ImageView
                 android:layout_width="120dp"
                 android:layout_height="80dp"
-                android:id="@+id/image"
+                android:id="@+id/skillImage"
                 android:src="@drawable/skill"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_toRightOf="@+id/image"
+                android:layout_toRightOf="@+id/skillImage"
                 android:layout_marginLeft="5dp"
                 >
 
@@ -38,7 +38,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/detail"
+                        android:id="@+id/userDetail"
                         android:fontFamily="monospace"
                         android:textColor="@color/cardview_dark_background"
                         android:alpha="0.6"/>
@@ -46,7 +46,7 @@
                 </RelativeLayout>
 
             </RelativeLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
 

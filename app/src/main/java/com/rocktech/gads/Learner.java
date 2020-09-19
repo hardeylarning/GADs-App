@@ -26,10 +26,10 @@ import static com.rocktech.gads.ApiClient.retrofit;
  */
 public class Learner extends Fragment {
     private static final String TAG = "Learner";
-    ArrayList<TopHour> topHours;
 
-    private ApiInterface apiInterface;
-   // private Context context;
+      private ApiInterface apiInterface;
+    private RecyclerView recyclerView;
+    // private Context context;
 //    private static final String TAG = "Learner";
 //    RecyclerView learnerRec;
 
@@ -44,12 +44,12 @@ public class Learner extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_learner, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.learnerRec);
-        topHours =new ArrayList<>();
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter();
-        recyclerView.setAdapter(adapter);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView = view.findViewById(R.id.learnerRec);
+//        ArrayList<TopHour> topHours = new ArrayList<>();
+//        RecyclerViewAdapter adapter = new RecyclerViewAdapter();
+//        recyclerView.setAdapter(adapter);
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+//        recyclerView.setLayoutManager(layoutManager);
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         try {
@@ -58,14 +58,20 @@ public class Learner extends Fragment {
                 @Override
                 public void onResponse(Call<List<TopHour>> call, Response<List<TopHour>> response) {
                     if (response.isSuccessful()){
+                        ArrayList<TopHour> topHours = new ArrayList<>();
+                        RecyclerViewAdapter adapter = new RecyclerViewAdapter();
+                        recyclerView.setAdapter(adapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                        recyclerView.setLayoutManager(layoutManager);
                         List<TopHour> tops = response.body();
                         //
                         for (TopHour top : tops){
                             TopHour topUserHour;
-                            topUserHour = new TopHour(top.getName(), top.getHours(), top.getCountry(), top.getBadgeUrl());
+                            topUserHour = new TopHour(top.getName(), top.getHours(), top.getCountry());
                             topHours.add(topUserHour);
                            // Log.d(TAG, "onResponse: Hours"+topUserHour.toString());
                         }
+                        adapter.setUsers(topHours);
                     }
                 }
 
@@ -80,10 +86,9 @@ public class Learner extends Fragment {
             Log.d(TAG, "onCreateView: failed"+e.getMessage());
         }
 
-        topHours.add(new TopHour("Musibawu Roqeeb", 5000, "hardexico.com","Nigeria"));
-        topHours.add(new TopHour("Musibawu Roqeeb Adelani", 8000, "hardexico.com","Nigeria"));
+//        topHours.add(new TopHour("Musibawu Roqeeb", 5000, "hardexico.com","Nigeria"));
+//        topHours.add(new TopHour("Musibawu Roqeeb Adelani", 8000, "hardexico.com","Nigeria"));
 
-        adapter.setUsers(topHours);
         return view;
        // return inflater.inflate(R.layout.fragment_learner, container, false);
     }

@@ -13,6 +13,12 @@ public class TopHour {
         this.badgeUrl = badgeUrl;
     }
 
+    public TopHour(String name, int hours, String country) {
+        this.name = name;
+        this.hours = hours;
+        this.country = country;
+    }
+
     public String getName() {
         return name;
     }

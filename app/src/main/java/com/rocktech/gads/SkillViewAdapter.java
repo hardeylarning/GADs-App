@@ -10,14 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SkillViewAdapter extends RecyclerView.Adapter<SkillViewAdapter.ViewHolder>{
 
     private static final String TAG = "RecyclerViewAdapter";
-    private ArrayList<User> users;
+    private List<User> users;
 
 
     @NonNull
@@ -32,8 +30,8 @@ public class SkillViewAdapter extends RecyclerView.Adapter<SkillViewAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called");
-        holder.name.append(users.get(position).getName());
-        holder.detail.append(users.get(position).getHours()+"  Skill IQ Score, "+users.get(position).getCountry());
+        holder.name.setText(users.get(position).getName());
+        holder.detail.setText(users.get(position).getHours()+"  Skill IQ Score, "+users.get(position).getCountry());
 //        holder.name.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View scroll_view) {
@@ -55,13 +53,13 @@ public class SkillViewAdapter extends RecyclerView.Adapter<SkillViewAdapter.View
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.image);
+            imageView=itemView.findViewById(R.id.skillImage);
             name = itemView.findViewById(R.id.userName);
-            detail = itemView.findViewById(R.id.detail);
+            detail = itemView.findViewById(R.id.userDetail);
           //  itemView.setOnClickListener(this);
         }
     }
-    public void setUsers(ArrayList<User> users){
+    public void setUsers(List<User> users){
         this.users = users;
        notifyDataSetChanged();
     }

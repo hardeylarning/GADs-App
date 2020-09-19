@@ -10,12 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
     private static final String TAG = "RecyclerViewAdapter";
-    private ArrayList<TopHour> topHours;
+    private List<TopHour> topHours;
 
     @NonNull
     @Override
@@ -52,12 +52,12 @@ public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapt
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.image);
-            name = itemView.findViewById(R.id.userName);
-            detail = itemView.findViewById(R.id.detail);
+            imageView=itemView.findViewById(R.id.topUserImage);
+            name = itemView.findViewById(R.id.topUserName);
+            detail = itemView.findViewById(R.id.topUserDetail);
         }
     }
-    public void setUsers(ArrayList<TopHour> topHours){
+    public void setUsers(List<TopHour> topHours){
         this.topHours = topHours;
         notifyDataSetChanged();
     }
